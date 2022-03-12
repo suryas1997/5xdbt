@@ -1,0 +1,22 @@
+{{
+config(
+    materialized='incremental',unique_key='province',incremental_strategy='delete+insert')
+}}
+
+select distinct 
+ PROVINCE
+,ISLAND
+,COUNTRY
+,TOTAL_CITIES
+,TOTAL_DISTRICTS
+,POPULATION_DENSITY
+,POPULATION
+,LATITUDE
+,LOCATION_ISO_CODE
+,TOTAL_REGENCIES
+,LONGITUDE
+,CONTINENT
+,AREA_KM_2_
+,TOTAL_URBAN_VILLAGES
+from  "FIVETRAN_INTERVIEW_DB"."GOOGLE_SHEETS"."COVID_19_INDONESIA_SURYA_SRINIVASAN" 
+where ISLAND is not null 
